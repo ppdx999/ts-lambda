@@ -40,10 +40,20 @@ it('RIGHT', () => {
   expect(result).toBe(2);
 });
 
-it('PLUS', () => {
-  const Y = $.PLUS($.C2)($.C3);
+it('SUCC', () => {
+  const C3 = $.SUCC($.C2);
 
-  const result = Y(x => x + 1)(0);
+  // C3が正しい関数であるかを確かめるために、Javascriptの整数に変換する
+  const result = C3(x => x + 1)(0);
+
+  expect(result).toBe(3);
+});
+
+it('PLUS', () => {
+  const C5 = $.PLUS($.C2)($.C3);
+
+  // C5が正しい関数であるかを確かめるために、Javascriptの整数に変換する
+  const result = C5(x => x + 1)(0);
 
   expect(result).toBe(5);
 });
