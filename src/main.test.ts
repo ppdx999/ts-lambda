@@ -22,6 +22,24 @@ it('IF', () => {
   expect(result2).toBe(2);
 });
 
+it('PAIR', () => {
+  const result = $.PAIR(1)(2)(x => y => x + y);
+
+  expect(result).toBe(3);
+});
+
+it('LEFT', () => {
+  const result = $.LEFT($.PAIR(1)(2));
+
+  expect(result).toBe(1);
+});
+
+it('RIGHT', () => {
+  const result = $.RIGHT($.PAIR(1)(2));
+
+  expect(result).toBe(2);
+});
+
 it('PLUS', () => {
   const Y = $.PLUS($.C2)($.C3);
 
