@@ -66,3 +66,12 @@ it('MULT', () => {
 
   expect(result).toBe(6);
 });
+
+it('EXP', () => {
+  const C8 = $.EXP($.C2)($.C3);
+
+  // C8が正しい関数であるかを確かめるために、Javascriptの整数に変換する
+  const result = C8(x => x + 1)(0);
+
+  expect(result).toBe(8);
+});
