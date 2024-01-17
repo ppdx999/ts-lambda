@@ -57,3 +57,12 @@ it('PLUS', () => {
 
   expect(result).toBe(5);
 });
+
+it('MULT', () => {
+  const C6 = $.MULT($.C2)($.C3);
+
+  // C6が正しい関数であるかを確かめるために、Javascriptの整数に変換する
+  const result = C6(x => x + 1)(0);
+
+  expect(result).toBe(6);
+});

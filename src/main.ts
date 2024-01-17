@@ -16,3 +16,6 @@ export const SUCC = n => s => z => s(n(s)(z));
 
 // PLUSはn回、sを初期値mに適用する関数を表現する
 export const PLUS = m => n => n(SUCC)(m);
+
+// MULTはn回、PLUS(m)を初期値C0に適用する関数を表現する
+export const MULT = m => n => n(PLUS(m))(C0);
