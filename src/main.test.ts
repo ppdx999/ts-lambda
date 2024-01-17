@@ -75,3 +75,13 @@ it('EXP', () => {
 
   expect(result).toBe(8);
 });
+
+it('ISZERO', () => {
+  const result = $.ISZERO($.C0);
+
+  expect(result).toBe($.TRUE);
+
+  const result2 = $.ISZERO($.C1);
+
+  expect(result2).toBe($.FALSE);
+});

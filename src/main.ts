@@ -22,3 +22,10 @@ export const MULT = m => n => n(PLUS(m))(C0);
 
 // EXPはn回、MULT(m)を初期値C1に適用する関数を表現する
 export const EXP = m => n => n(MULT(m))(C1);
+
+// 与えられた数nが0かどうかの判定は、初期値TRUEに対して
+// n回、FALSEを適用した結果として表現できる
+// 0回目: TRUE
+// 1回目: FALSE(TRUE) --> FALSE
+// 2回目: FALSE(FALSE(TRUE)) --> FALSE
+export const ISZERO = n => n(x => FALSE)(TRUE);
