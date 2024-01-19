@@ -1,5 +1,6 @@
 import * as $ from './main.js';
 
+// Church数のままだとテストが難しいのでJavascriptの整数に変換する
 const resolve_number = n => n(x => x + 1)(0);
 
 const expect_number = n =>  expect(resolve_number(n));
@@ -45,49 +46,26 @@ it('RIGHT', () => {
 });
 
 it('SUCC', () => {
-  const C3 = $.SUCC($.C2);
-
-  // C3が正しい関数であるかを確かめるために、Javascriptの整数に変換する
-  const result = C3(x => x + 1)(0);
-
-  expect(result).toBe(3);
+  expect_number($.SUCC($.C0)).toBe(1);
+  expect_number($.SUCC($.C1)).toBe(2);
+  expect_number($.SUCC($.C2)).toBe(3);
 });
 
 it('PLUS', () => {
-  const C5 = $.PLUS($.C2)($.C3);
-
-  // C5が正しい関数であるかを確かめるために、Javascriptの整数に変換する
-  const result = C5(x => x + 1)(0);
-
-  expect(result).toBe(5);
+  expect_number($.PLUS($.C2)($.C3)).toBe(5);
 });
 
 it('MULT', () => {
-  const C6 = $.MULT($.C2)($.C3);
-
-  // C6が正しい関数であるかを確かめるために、Javascriptの整数に変換する
-  const result = C6(x => x + 1)(0);
-
-  expect(result).toBe(6);
+  expect_number($.MULT($.C2)($.C3)).toBe(6);
 });
 
 it('EXP', () => {
-  const C8 = $.EXP($.C2)($.C3);
-
-  // C8が正しい関数であるかを確かめるために、Javascriptの整数に変換する
-  const result = C8(x => x + 1)(0);
-
-  expect(result).toBe(8);
+  expect_number($.EXP($.C2)($.C3)).toBe(8);
 });
 
 it('ISZERO', () => {
-  const result = $.ISZERO($.C0);
-
-  expect(result).toBe($.TRUE);
-
-  const result2 = $.ISZERO($.C1);
-
-  expect(result2).toBe($.FALSE);
+  expect($.ISZERO($.C0)).toBe($.TRUE);
+  expect($.ISZERO($.C1)).toBe($.FALSE);
 });
 
 
