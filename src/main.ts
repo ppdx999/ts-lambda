@@ -29,3 +29,12 @@ export const EXP = m => n => n(MULT(m))(C1);
 // 1回目: FALSE(TRUE) --> FALSE
 // 2回目: FALSE(FALSE(TRUE)) --> FALSE
 export const ISZERO = n => n(x => FALSE)(TRUE);
+
+
+export const SLOW_SUCC = x =>
+  IF(ISZERO(LEFT(x)))
+    (PAIR(C1)(RIGHT(x)))
+    (PAIR(SUCC(LEFT(x)))(SUCC(RIGHT(x))));
+
+
+export const PRED = n => RIGHT(n(SLOW_SUCC)(PAIR(C0)(C0)));

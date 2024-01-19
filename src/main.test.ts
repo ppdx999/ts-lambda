@@ -1,5 +1,9 @@
 import * as $ from './main.js';
 
+const resolve_number = n => n(x => x + 1)(0);
+
+const expect_number = n =>  expect(resolve_number(n));
+
 it('TRUE', () => {
   const result = $.TRUE(1)(2);
 
@@ -84,4 +88,37 @@ it('ISZERO', () => {
   const result2 = $.ISZERO($.C1);
 
   expect(result2).toBe($.FALSE);
+});
+
+
+it('SLOW_SUCC', () => {
+  const s0 = $.SLOW_SUCC($.PAIR($.C0)($.C0));
+
+  expect_number($.LEFT(s0)).toBe(1);
+  expect_number($.RIGHT(s0)).toBe(0);
+
+  const s1 = $.SLOW_SUCC(s0);
+
+  expect_number($.LEFT(s1)).toBe(2);
+  expect_number($.RIGHT(s1)).toBe(1);
+
+  const s2 = $.SLOW_SUCC(s1);
+
+  expect_number($.LEFT(s2)).toBe(3);
+  expect_number($.RIGHT(s2)).toBe(2);
+});
+
+
+it('PRED', () => {
+  let result = $.PRED($.C0);
+
+  expect_number(result).toBe(0);
+
+  result = $.PRED($.C1);
+
+  expect_number(result).toBe(0);
+
+  result = $.PRED($.C2);
+
+  expect_number(result).toBe(1);
 });
