@@ -38,3 +38,15 @@ export const SLOW_SUCC = x =>
 
 
 export const PRED = n => RIGHT(n(SLOW_SUCC)(PAIR(C0)(C0)));
+
+// 遅延評価でないので無限ループになる
+// g: 初期値
+// h: 再帰関数
+// n: 回数
+export const REC = g => h => n =>
+  IF(ISZERO(n))
+    (g)
+    (h
+     (PRED(n))
+     (REC(g)(h)(PRED(n)))
+    );
